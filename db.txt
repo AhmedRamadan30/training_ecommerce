@@ -15,6 +15,7 @@ products (name, description, slug, thumbnail, gallery, category_id, brand_id, fe
 
 coupons (code, discount, discount_type, max_discount, type, starts_at, ends_at, status)
 
+
 orders (user_id, address_id, sub_total, coupon_id, total, payments_type, payment_method, payment_status, order_status)
 order_details (order_id, product_id, seller_id, qty, price)
 

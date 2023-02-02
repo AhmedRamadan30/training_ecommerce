@@ -10,6 +10,15 @@ class Coupon extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'discount',
+    ];
+
     public function coupon_usages(): HasMany
     {
         return $this->hasMany(CouponUsage::class);
