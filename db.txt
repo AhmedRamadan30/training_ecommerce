@@ -1,0 +1,21 @@
+admins (id, name, image, email, password, phone_number, remember_token ,created_at, updated_at)
+
+users (id, f_name, l_name, email, password, phone_number, image, email_verified_at)
+
+sellers (id, f_name, l_name, email, password, phone_number, image, email_verified_at, status)
+
+countries (id, name, flag)
+addresses (user_id, country_id, city, street)
+
+
+categories (name, parent_id, image)
+brands (name, image)
+
+products (name, description, slug, thumbnail, gallery, category_id, brand_id, featured, price, discount, discount_type, published, meta_title, meta_description, meta_image, meta_keywords)
+
+coupons (code, discount, discount_type, max_discount, type, starts_at, ends_at, status)
+
+orders (user_id, address_id, sub_total, coupon_id, total, payments_type, payment_method, payment_status, order_status)
+order_details (order_id, product_id, seller_id, qty, price)
+
+
