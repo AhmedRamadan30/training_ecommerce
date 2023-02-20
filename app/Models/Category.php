@@ -11,14 +11,28 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function products():HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    public function parent(): BelongsTo
+    public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id');
+        if ($this->parent_id != null) {
+            // TODO: task 1
+//            $parent = Category::where('id', $this->parent_id)->first()->name;
+//            if (ddddd >= 50) {
+//                return ($parent) . '...';
+//            } else {
+//                return $parent;
+//            }
+            return Category::where('id', $this->parent_id)->first()->name;
+//            return $this->belongsTo(Category::class, 'parent_id');
+        } else {
+            return "";
+        }
     }
 
     public function sons():HasMany

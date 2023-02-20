@@ -19,9 +19,13 @@ class AuthController extends Controller
         ]);
         $user = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
         if ($user) {
-            dd('correct');
+            return redirect()->route('admin.home');
         } else {
-            dd('wrong');
+            return redirect()->back()->with(['error' => 'email or password are wrong']);
         }
+    }
+
+    public function home() {
+        return view('admin.home');
     }
 }
