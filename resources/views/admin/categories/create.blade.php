@@ -20,7 +20,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-6 col-12 mx-auto">
-                                        <form method="post" action="{{ route('admin.categories.store') }}">
+                                        <form method="post" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 <label for="name" class="sr-only">Name</label>
@@ -36,6 +36,13 @@
                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="custom-file mb-4">
+                                                    <input type="file" class="custom-file-input" id="image" name="image" required>
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                </div>
                                             </div>
 
                                             <div class="form-group">

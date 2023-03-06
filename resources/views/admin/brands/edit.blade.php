@@ -20,24 +20,14 @@
 
                                 <div class="row">
                                     <div class="col-lg-6 col-12 mx-auto">
-                                        <form method="post" action="{{ route('admin.categories.update', $category->id) }}">
+                                        <form method="post" action="{{ route('admin.brands.update', $brand->id) }}" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-group">
                                                 <label for="name" class="sr-only">Name</label>
-                                                <input id="name" type="text" name="name"
-                                                       placeholder="enter name of category" class="form-control"
-                                                       value="{{ $category->name }}"
+                                                <input id="name" type="text" name="name" value="{{ $brand->name }}"
+                                                       placeholder="enter name of brand" class="form-control"
                                                        required="">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="parent_id" class="sr-only">Parent</label>
-                                                <select id="parent_id" type="text" name="parent_id" class="form-control">
-                                                    <option>select parent</option>
-                                                    @foreach($categories as $item)
-                                                        <option @if($item->id == $category->parent_id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
-                                                    @endforeach
-                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -45,10 +35,11 @@
                                                     <input type="file" class="custom-file-input" id="image" name="image">
                                                     <label class="custom-file-label" for="image">Choose file</label>
                                                 </div>
-                                                <a href="{{ asset('uploads/' .  $category->image) }}" target="_blank">
-                                                    <img width="50" height="50"  src="{{ asset('uploads/' .  $category->image) }}" alt="{{ $category->name }}" title="{{ $category->name }}">
+                                                <a href="{{ asset('uploads/' .  $brand->image) }}" target="_blank">
+                                                    <img width="50" height="50"  src="{{ asset('uploads/' .  $brand->image) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}">
                                                 </a>
                                             </div>
+
 
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-success">save</button>

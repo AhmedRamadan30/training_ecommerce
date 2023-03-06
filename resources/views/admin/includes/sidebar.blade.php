@@ -19,7 +19,7 @@
                         <a href="{{ route('admin.categories.index') }}"> Categories </a>
                     </li>
                     <li>
-                        <a href="index2.html"> Brands </a>
+                        <a href="{{ route('admin.brands.index') }}"> Brands </a>
                     </li>
                 </ul>
             </li>

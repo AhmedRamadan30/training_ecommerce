@@ -7,7 +7,6 @@ sellers (id, f_name, l_name, email, password, phone_number, image, email_verifie
 countries (id, name, flag)
 addresses (user_id, country_id, city, street)
 
-
 categories (name, parent_id, image)
 brands (name, image)
 
@@ -18,7 +17,5 @@ coupons (code, discount, discount_type, max_discount, type, starts_at, ends_at, 
 orders (user_id, address_id, sub_total, coupon_id, total, payments_type, payment_method, payment_status, order_status)
 order_details (order_id, product_id, seller_id, qty, price)
 
-
 // today's session
-1 - template
-2 - crud operation categories, brands
+1 - brands

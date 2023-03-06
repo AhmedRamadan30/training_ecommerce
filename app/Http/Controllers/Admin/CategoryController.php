@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -46,10 +47,12 @@ class CategoryController extends Controller
             'parent_id' => 'nullable'
         ]);
 
+        $image = $request->hasFile('image') ? $request->file('image')->store('categories') : null;
         // insert into db
         Category::create([
             'name' => $request->name,
-            'parent_id' => $request->parent_id
+            'parent_id' => $request->parent_id,
+            'image'     => $image
         ]);
 
         // redirect to index page
@@ -85,12 +88,14 @@ class CategoryController extends Controller
             'name'      => 'required|string|min:3|max:255',
             'parent_id' => 'nullable'
         ]);
-
+        $category->name = $request->name;
+        $category->parent_id = $request->parent_id;
+        if ($request->hasFile('image')) {
+            File::delete('uploads/'.$category->image);
+            $category->image = $request->file('image')->store('categories');
+        }
         // update into db
-        $category->update([
-            'name' => $request->name,
-            'parent_id' => $request->parent_id
-        ]);
+        $category->save();
 
         // redirect to index page
         return redirect()->route('admin.categories.index')->with('success', 'category updated successfully');
